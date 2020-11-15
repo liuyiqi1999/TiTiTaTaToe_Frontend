@@ -19,14 +19,16 @@
           {{notice}}
         </div>
       </v-snackbar>
-      <players-drawer :player="player" style="margin-bottom: -310px; margin-left: 50px"></players-drawer>
+      <players-drawer :player="player" ref="drawer" style="margin-bottom: -355px; margin-left: 50px"></players-drawer>
       <v-card
           class="card"
           elevation="6"
       >
         <game-board
             :player="player"
+            :nowplayer="nowPlayer"
             @end-event="observeEndEvent"
+            @now-player-event="observeNowPlayerEvent"
         ></game-board>
       </v-card>
     </div>
@@ -50,6 +52,7 @@ export default {
   data() {
     return {
       player: '',
+      nowPlayer: '1',
       showNotice: false,
       noticeColor: '',
       notice: '',
@@ -73,8 +76,12 @@ export default {
       }
 
       this.showNotice = true
+    },
+    observeNowPlayerEvent(data){
+      this.nowPlayer = data
+      this.$refs.drawer.nowPlayer = this.nowPlayer
     }
-  }
+  },
 }
 </script>
 

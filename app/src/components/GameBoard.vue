@@ -95,11 +95,13 @@ export default {
       else if (data[2][0] === '1') this.nextButtonCircle = true
       let gameBoardStr = data[2].substring(1, 82)
       this.nextBoard = data[2][82]
+      let nowPlayer = this.time % 2
+      this.$emit('now-player-event',nowPlayer)
       for (let i = 0; i < 9; i++) {
         let littleBoardArray = gameBoardStr.substring(i * 9, i * 9 + 9).split('')
         this.$refs.boards[i].setBoard(littleBoardArray)
         this.$refs.boards[i].setNextButtonCircle(this.nextButtonCircle)
-        if (i === parseInt(this.nextBoard) && this.time % 2 === this.player) {
+        if (i === parseInt(this.nextBoard) && nowPlayer === this.player) {
           this.$refs.boards[i].setDisabled(false)
         } else {
           this.$refs.boards[i].setDisabled(true)

@@ -11,8 +11,9 @@
       <v-list
           shaped
       >
+        <v-subheader>Player {{player+1}}</v-subheader>
         <v-list-item-group
-          v-model="player"
+          v-model="nowPlayer"
           color="white"
         >
           <v-list-item
@@ -26,7 +27,7 @@
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title>{{ player.name }}</v-list-item-title>
+              <v-list-item-title v-html="player.name"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -50,11 +51,11 @@ export default {
         { id:1, name: 'Player 1', icon: 'mdi-panorama-fisheye'},
         { id:2, name: 'Player 2', icon: 'mdi-close'},
       ],
+      nowPlayer: '1',
     }
   },
 }
 </script>
 
 <style scoped>
-
 </style>

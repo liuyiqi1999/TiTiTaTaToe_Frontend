@@ -14,7 +14,7 @@ export default new Vuex.Store({
     },
     mutations: {
         connect(state) {
-            state.connection = new WebSocket("ws://localhost:8888/ws")
+            state.connection = new WebSocket("ws://112.126.65.41:8888/ws")
         },
     }
 })

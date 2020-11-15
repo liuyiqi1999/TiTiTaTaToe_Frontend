@@ -1,5 +1,5 @@
 <template>
-  <v-card class="little-board" :disabled="disabled">
+  <v-card class="little-board" :disabled="disabled" :elevation="elevation">
     <v-row style="height: 160px; ">
       <v-col
           v-for="n in 9"
@@ -31,6 +31,7 @@ export default {
     return {
       nextButtonCircle: false,
       disabled: true,
+      elevation: 0,
     }
   },
   methods: {
@@ -54,9 +55,10 @@ export default {
     },
     setDisabled(disabled){
       this.disabled = disabled
+      if(disabled) this.elevation = 0
+      else this.elevation = 20
     },
     setNextButtonCircle(circle){
-      console.log(circle)
       this.nextButtonCircle = circle
     },
     setBoard(boardArray){
