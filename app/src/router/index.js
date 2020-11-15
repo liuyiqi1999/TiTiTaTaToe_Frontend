@@ -25,11 +25,11 @@ const router = new Router({
                 },
             ],
         },
-        // {
-        //     path: '/game',
-        //     name: 'Game',
-        //     component: () => import('@/layouts/game/Index.vue'),
-        // }
+        {
+            path: '/game',
+            name: 'Game',
+            component: () => import('@/layouts/game/Index.vue'),
+        }
     ]
 })
 

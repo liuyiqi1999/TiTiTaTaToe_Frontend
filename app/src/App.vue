@@ -10,7 +10,7 @@
 export default {
   name: 'App',
   metaInfo: {
-    title: 'App',
+    title: 'TiTiTaTaToe',
     titleTemplate: '%s | TiTiTaTaToe',
     htmlAttrs: {lang: 'en'},
     meta: [
