@@ -32,7 +32,7 @@
         ></game-board>
       </v-card>
     </div>
-    <v-footer style="height: 20%; background-color: #707070; color: whitesmoke">
+    <v-footer style="margin-top:30px; background-color: #707070; color: whitesmoke">
       <p style="font-size: 13px; text-align: center; margin: 0 auto">
         井字井字棋（TiTiTaTaToe）<br>
         作者：刘亦奇、蔡惊天<br>
@@ -64,11 +64,11 @@ export default {
   methods:{
     observeEndEvent(data){
       if(data==='1') {
-        this.noticeColor = 'deep-orange darken-2'
+        this.noticeColor = 'cyan darken-2'
         this.notice = 'Player 1 获胜！'
       }
       else if(data==='2') {
-        this.noticeColor = 'cyan darken-2'
+        this.noticeColor = 'deep-orange darken-2'
         this.notice = 'Player 2 获胜！'
       }
       else if(data==='3'){
@@ -98,6 +98,6 @@ export default {
   padding: 25px 50px 0px 50px;
   left: 50%;
   transform: translate(-50%);
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 </style>

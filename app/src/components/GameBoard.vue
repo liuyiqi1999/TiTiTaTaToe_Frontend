@@ -6,7 +6,7 @@
         dark
         elevation="8"
         :color="noticeColor"
-        style="margin-top: -80px"
+        style="margin-top: -40px;"
     >
       {{ notice }}
     </v-snackbar>
