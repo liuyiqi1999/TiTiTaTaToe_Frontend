@@ -11,7 +11,7 @@
       <v-list
           shaped
       >
-        <v-subheader>{{players[0].name}}</v-subheader>
+        <v-subheader>{{$store.state.username}}</v-subheader>
         <v-list-item-group
           v-model="nowPlayer"
           color="white"
@@ -54,8 +54,14 @@ export default {
     }
   },
   created(){
-    this.players[0].name=this.$store.state.username
-    this.players[1].name = this.$store.state.opponent
+    let p = this.$store.state.playerNum
+    if(p===1){
+      this.players[0].name = this.$store.state.username
+      this.players[1].name = this.$store.state.opponent
+    }else if (p===2){
+      this.players[1].name = this.$store.state.username
+      this.players[0].name = this.$store.state.opponent
+    }
   }
 }
 </script>

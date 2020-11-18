@@ -223,6 +223,7 @@ export default {
         that.success = false
       } else if (i === '2') {
         let p = parseInt(event.data.split(" ")[2]) + 1
+        that.$store.state.playerNum = p
         that.loadingStr = '游戏即将开始，你是 Player ' + p + '。'
         that.loading = false
         that.input = false

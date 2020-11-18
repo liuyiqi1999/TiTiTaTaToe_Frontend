@@ -8,6 +8,7 @@ export default new Vuex.Store({
         connection: null,
         username: '',
         opponent: '',
+        playerNum: 0,
     },
     getters: {
         getConn(state){
