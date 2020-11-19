@@ -17,6 +17,17 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
+  },
+  created() {
+    let screenWidth = document.body.clientWidth
+    console.log(screenWidth)
+    if(screenWidth > 800){
+      this.$store.state.app = false
+      this.$router.push('/user')
+    }else{
+      this.$store.state.app = true
+      this.$router.push('/app')
+    }
   }
 }
 </script>

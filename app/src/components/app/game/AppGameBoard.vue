@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="d-flex justify-center align-center" style="padding: 0 8px">
     <v-snackbar
         v-model="showNotice"
         top
         dark
         elevation="8"
         :color="noticeColor"
-        style="margin-top: -40px;"
+        style="margin-top: -70px;"
     >
       {{ notice }}
     </v-snackbar>
@@ -16,23 +16,24 @@
           :key="n"
           class="d-flex child-flex"
           cols="4"
+          style="width: 112px; height: 112px; padding:5px"
       >
-        <little-board
+        <app-little-board
             ref="boards"
             :board-num="n-1"
             @move-event="observeMoveEvent"
-        />
+        ></app-little-board>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import LittleBoard from "@/components/LittleBoard";
+import AppLittleBoard from "@/components/app/game/AppLittleBoard";
 
 export default {
-  name: "GameBoard",
-  components: {LittleBoard},
+  name: "AppGameBoard",
+  components: {AppLittleBoard},
   props: ['player'],
   data() {
     return {
@@ -47,7 +48,7 @@ export default {
   },
   mounted() {
     let that = this
-
+    that.$store.state.connection.send("7\n")
     let initStr = new Array(81).fill(0).toString().replace(/,/g, "")
     initStr = '1' + initStr + '43'
     let initArray = [3, 1, initStr]
@@ -85,6 +86,11 @@ export default {
           that.noticeColor = 'red'
           that.notice = event.data.split(" ")[2]
           that.showNotice = true
+        }
+      } else if (i === '11') {
+        if (event.data.split(" ")[1] === '1') {
+          that.$store.state.opponent = event.data.split(" ")[2]
+          that.$emit('opponent-event', that.$store.state.opponent)
         }
       }
     }

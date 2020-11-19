@@ -1,17 +1,16 @@
 <template>
-  <v-app
-      class="app d-flex justify-center align-center"
-  >
-    <div style="margin-top: 50px;">
+  <div>
+    <v-overlay
+      :value="showNotice"
+    >
       <v-snackbar
           v-model="showNotice"
           top
-          right
           dark
           elevation="8"
           timeout="-1"
           :color="noticeColor"
-          style="margin-top: 40px;"
+          style="margin-top: 130px;"
       >
         <div style=" font-size: 20px;padding:15px 5px">
           <h1 style="font-size: 28px">游戏结束</h1>
@@ -19,36 +18,27 @@
           {{notice}}
         </div>
       </v-snackbar>
-      <players-drawer :player="player" ref="drawer" style="margin-bottom: -355px; margin-left: 50px"></players-drawer>
-      <v-card
-          class="card"
-          elevation="6"
-      >
-        <game-board
-            :player="player"
-            :nowplayer="nowPlayer"
-            @end-event="observeEndEvent"
-            @now-player-event="observeNowPlayerEvent"
-        ></game-board>
-      </v-card>
-    </div>
-    <v-footer style="margin-top:30px; background-color: #707070; color: whitesmoke">
-      <p style="font-size: 13px; text-align: center; margin: 0 auto">
-        井字井字棋（TiTiTaTaToe）<br>
-        作者：刘亦奇、蔡惊天<br>
-        2020.11
-      </p>
-    </v-footer>
-  </v-app>
+    </v-overlay>
+
+    <app-game-board
+        :player="player"
+        :nowplayer="nowPlayer"
+        @end-event="observeEndEvent"
+        @now-player-event="observeNowPlayerEvent"
+        @opponent-event="observeOpponentEvent"
+    ></app-game-board>
+    <app-players-drawer :player="player" :now-player="nowPlayer" ref="drawer" style="margin-bottom: 0px; margin-left: 20px"/>
+  </div>
+
 </template>
 
 <script>
-import PlayersDrawer from "@/components/PlayersDrawer";
-import GameBoard from "@/components/GameBoard";
+import AppGameBoard from "@/components/app/game/AppGameBoard";
+import AppPlayersDrawer from "@/components/app/game/AppPlayersDrawer";
 
 export default {
-  name: "Index",
-  components: {GameBoard, PlayersDrawer},
+  name: "Index.vue",
+  components: {AppGameBoard,AppPlayersDrawer},
   data() {
     return {
       player: '',
@@ -56,6 +46,7 @@ export default {
       showNotice: false,
       noticeColor: '',
       notice: '',
+      opponent: 'Opponent',
     }
   },
   created() {
@@ -87,25 +78,14 @@ export default {
     },
     observeNowPlayerEvent(data){
       this.nowPlayer = data
-      this.$refs.drawer.nowPlayer = this.nowPlayer
+    },
+    observeOpponentEvent(data){
+      this.$refs.drawer.setOpponent(data)
     }
   },
 }
 </script>
 
 <style scoped>
-.app {
-  font-size: 16px;
-  background: #707070 !important;
-}
 
-.card {
-  height: 600px;
-  width: 600px;
-  background-color: #292929;
-  padding: 25px 50px 0px 50px;
-  left: 50%;
-  transform: translate(-50%);
-  margin-top: 30px;
-}
 </style>

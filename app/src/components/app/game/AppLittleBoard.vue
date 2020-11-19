@@ -1,31 +1,31 @@
 <template>
-  <v-card class="little-board" :disabled="disabled" :elevation="elevation">
-    <v-row style="height: 160px; ">
+  <v-card class="little-board d-flex justify-center align-center" :disabled="disabled" :elevation="elevation">
+    <v-row style="height: 100px; width: 100px; padding: 0">
       <v-col
           v-for="n in 9"
           :key="n"
           class="d-flex child-flex"
           cols="4"
-          style="padding: 0px"
+          style="padding: 0 5px!important;width: 20px;"
           @mouseenter="setButtonType(n-1)"
           @mouseleave="clearButtonType(n-1)"
       >
-        <little-button
+        <app-little-button
             ref="button"
             :button-num = "n-1"
             @select-event="observeSelectEvent"
-        ></little-button>
+        ></app-little-button>
       </v-col>
     </v-row>
   </v-card>
 </template>
 
 <script>
-import LittleButton from "@/components/LittleButton";
+import AppLittleButton from "@/components/app/game/AppLittleButton";
 
 export default {
-  name: "LittleBoard",
-  components: {LittleButton},
+  name: "AppLittleBoard",
+  components: {AppLittleButton},
   props: ['boardNum','app'],
   data() {
     return {
@@ -81,9 +81,9 @@ export default {
 
 <style scoped>
 .little-board {
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   background: #2f2f2f;
-  padding: 2px 15px 10px 15px;
+  padding: 15px 10px 10px;
 }
 </style>

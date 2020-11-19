@@ -120,7 +120,7 @@
               <v-col cols="2">
                 <v-icon>mdi-account-cowboy-hat</v-icon>
               </v-col>
-              <v-col cols="9" style="text-align: left">
+              <v-col cols="8" style="text-align: left">
                 {{ user }}
               </v-col>
               <v-col cols="1">
@@ -230,12 +230,22 @@ export default {
         that.matching = false
         that.success = true
         that.$store.state.connection.send("7\n")
-        that.$router.push({
-          name: 'Game',
-          query: {
-            player: event.data.split(" ")[2]
-          }
-        })
+
+        if(that.$store.state.app){
+          that.$router.push({
+            name: 'AppGame',
+            query: {
+              player: event.data.split(" ")[2]
+            }
+          })
+        }else{
+          that.$router.push({
+            name: 'Game',
+            query: {
+              player: event.data.split(" ")[2]
+            }
+          })
+        }
       } else if (i === '5') {
         if (event.data.split(" ")[1] === '1') {
           let name = event.data.split(" ")[2]
@@ -321,6 +331,7 @@ export default {
       that.success = false
       that.input = false
       that.matching = false
+      that.$router.go(0)
     }
   },
 }
