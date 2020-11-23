@@ -1,6 +1,6 @@
 <template>
   <v-app
-      class="app d-flex justify-center align-center"
+      class="app d-flex justify-center"
   >
     <div>
       <v-card
@@ -30,7 +30,7 @@ export default {
 .app{
   font-size: 16px;
   background: #707070!important;
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 .card{

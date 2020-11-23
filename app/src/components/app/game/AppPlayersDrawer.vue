@@ -5,7 +5,6 @@
         dark
         color="transparent"
     >
-      <v-subheader>{{ $store.state.username }}</v-subheader>
       <v-list-item-group
           v-model="nowPlayer"
           color="white"
@@ -15,6 +14,7 @@
             :key="player.id"
             link
             disabled
+            style="font-size: 13px"
         >
           <v-list-item-icon>
             <v-icon>{{ player.icon }}</v-icon>
@@ -26,6 +26,7 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+
   </div>
 </template>
 

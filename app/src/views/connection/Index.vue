@@ -7,7 +7,7 @@
           dark
           elevation="8"
           :color="noticeColor"
-          style="margin-top: -80px;"
+          style="margin-top: -30px;"
       >
         {{ notice }}
       </v-snackbar>
@@ -168,7 +168,7 @@ export default {
   data() {
     return {
       loadingStr: '正在连接服务器……',
-      showNotice: false,
+      showNotice: true,
       noticeColor: '',
       notice: '',
       message: '',
