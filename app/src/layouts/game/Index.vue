@@ -64,11 +64,11 @@ export default {
   methods:{
     observeEndEvent(data){
       if(data==='1') {
-        this.noticeColor = 'deep-orange darken-2'
+        this.noticeColor = 'cyan darken-2'
         this.notice = 'Player 1 获胜！'
       }
       else if(data==='2') {
-        this.noticeColor = 'cyan darken-2'
+        this.noticeColor = 'deep-orange darken-2'
         this.notice = 'Player 2 获胜！'
       }
       else if(data==='3'){

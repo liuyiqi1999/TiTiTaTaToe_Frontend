@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'User',
+  name: 'App',
 }
 </script>
 
@@ -34,9 +34,9 @@ export default {
 }
 
 .card{
-  width: 450px;
+  width: 358px;
   background-color: #292929;
-  padding: 40px 40px 58px 40px;
+  padding: 20px 15px;
   left: 50%;
   transform: translate(-50%);
 }
